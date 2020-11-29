@@ -1,4 +1,2 @@
-# hello-world
-Learning Github...
-
-Hello world! I'm Dorin, and this is my first time on Github. I'm really excited about this new path, and I hope I'll learn a lot. I'm currently studying JavaScript, and I'm looking forward to learn and collaborate with anyone willing to do so. Hopefully, it will be a great journey! 
+# Hello Github
+Hello **Github**! I'm Dorin, a curious and energetic guy that started to learn coding a couple of mongth ago on **FreeCodeCamp** (great place to learn, check it out if you haven't yet). This is my first time here. Please feel free to contribute in any way, correct me, make suggestions or simply say Hi! . I'm really excited about this new path; hopefully, I'll learn a lot walking it, with **you**. Right now I'm focusing on plain JavaScript. It'a a great programming language, I love it. I practice every day on Codewars. I'll publish here the solutions of some alghoritms; please give me a feedback, ask question, or just show me a complete different way in which I could have done it. Borrow me your eyes; mine will be yours too, if you want. That said, happy coding to everyone: I hope you'll get in touch.   
