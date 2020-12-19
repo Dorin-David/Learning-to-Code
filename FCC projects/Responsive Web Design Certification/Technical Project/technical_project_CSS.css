@@ -1,0 +1,121 @@
+ *{
+    position: relative;
+    
+}
+body{
+    
+    
+}
+h1{
+    font-size: 45px;
+    font-family: 'Secular One', sans-serif;
+    color: crimson;
+    font-weight: 800;
+    text-align: center;
+    
+}
+
+#navbar {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    border-right: 1px solid indianred;
+    padding-right: 15px;
+    height: 100%;
+    font-size: 20px;
+   
+  
+}
+
+#navbar > header{
+  text-align: center;
+  font-size: 25px;
+  
+}
+        #navbar > ul {
+  list-style: none;
+  
+            
+}
+        #navbar > ul > li{
+            margin-top: 10px;
+            text-align: left;
+            font-family: 'Roboto Slab', sans-serif;
+           
+            
+        }
+a{
+    text-decoration: none;
+    display: block;
+    color:coral;
+}
+a:hover{
+    cursor: pointer;
+    color: white;
+    background: indianred;
+}
+.wrapper{
+  position: absolute;
+  margin-left: 250px;
+    padding: 0px 15px;
+  
+  
+}
+
+@media only screen and (max-width: 768px){
+    #navbar{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-height: 275px;
+        
+    }
+    .wrapper{
+        position: absolute;
+        margin-top: 280px;
+        margin-left: 0px;
+        
+    }
+    h1{
+        padding-top: 35px;
+    }
+}
+
+header {
+    text-align: center;
+    font-size: 30px;
+    color: indianred;
+    margin: 7px 0px;
+}
+p{
+    font-family: 'Roboto Slab', sans-serif;
+}
+hr{
+    color: indianred;
+}
+
+
+  table, th, td{
+    border-collapse: collapse;
+    border: 3px solid  red;
+    padding: 10px;
+    background: rgba(255, 133, 102, .3);
+    font-weight: 800;
+    text-align: center;
+      font-size: 20px;
+}
+  
+  td{
+    color: #cc0000;
+    font-size: 25px;
+  }
+.code {
+    background: lightgray;
+    font-size: 15px;
+}
+code{
+    font-size: 15px;
+    background: lightgray;
+    padding: 2px;
+}
