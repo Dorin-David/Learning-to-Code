@@ -1,0 +1,112 @@
+<!--
+This is the Survey Project created for the FreeCodeCamp Responsive Web Design Certification
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Survey Form</title>
+        <link href='style.css' rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+        <title>Your favorite type of art</title>
+        <link rel='icon' href="Images/mona-lisa_covid.jpg" type='image/lisa'>
+    </head>
+   
+    <body>
+        <main id='main'>
+       
+        <!--All the form stands above a fixed background-->
+            <header class='header'>
+            <h1 id='title'>What's your favorite type of art?</h1>
+            </header>
+            
+        <div class='form'>
+        <form id='survery-form' action='Erehwon.php'>
+            <div class="info">
+                <h1 style='text-align: center; font-size: 40px; color: orangered;'>Survey</h1>
+            <p id='description' >Art has shaped human culture from the very beginning; we could say, actually, that to have a culture, to be human,
+                means to protect and spread art. We would like to know about the inner art lover inside you, so please fill up the below survey.
+                </p>
+                
+            <h3>Please insert your name:</h3>
+            <label for="name" id='name-label'>
+            <input id='name' name="name" type='text' placeholder="Insert your name" required>
+            </label>
+            <h3>Please insert your email:</h3>
+            <label for="email" id='email-label'>
+             <input id="email" name="email" type="email" placeholder="Insert your email" required>
+            </label>
+            <h3>Please insert you age:</h3>
+            <label for="number" id="number-label">
+            <input id='number' name="age" type='number' placeholder="Insert your age (you have to be at least 14)" min='14' max='100' required>
+            </label>
+            </div>
+            <p>Of the below museums (if you happened to visit any of them; if not, select 'None of the above' and rush to any of them: you won't regret it) which one was your favorite?</p>
+            <label for='dropdown'>Choose museum:</label>
+            <select name='museum' id='dropdown'> 
+                <option value="van_gogh">Van Gogh Museum (Amsterdam)</option>
+                <option value="national_gallery">The National Gallery (London)</option>
+                <option value="uffizi">Uffizi Gallery(Florence)</option>
+                <option value="prado">Prado (Madrid)</option>
+                <option value='none'>None of the above</option>
+            </select>
+            <!--A step here?-->
+            <div class='radiobuttons'>
+            <p>If you had to choose one of the major arts below, which one would be your pick?</p>
+            <label for='liteature'>
+             <input type='radio' id='literature' name='arts' value='literature' checked> Literature
+            </label>
+            <label for='music'>
+              <input type='radio' id='music' name='arts' value='music'>Music
+            </label>
+            <label for='cinema'>
+              <input type='radio' id='cinema' name='arts' value='cinema'>Cinema
+            </label>
+            <label for='visual_arts'>
+              <input type='radio' id='visual_arts' name='arts' value='visual_arts'>Visual Arts
+            </label>
+            </div>
+            <!--flex box with two columns of choices -->
+            <p>And what about the big names below? You have surely heard of them, of most at least... Select those you like (any number)</p>
+            <div class='checkboxes'>
+            <div class='left_check'>
+            <label for='Dostoevkij'>
+              <input type='checkbox' id='Dostoevkij' name='big_names' value='Dostoevkij'>Feodor Dostoevkij
+            </label><br>
+            <label for='Dalí'>
+                <input type='checkbox' id='Dalí' name='big_names' value='Dalí'> Salvador Dalí
+               
+            </label><br>
+            <label for='Hitchcock'>
+            <input type="checkbox" id='Hitchcock' name='big_names' value='Hitchcock'>Alfred Hitchcock
+            </label><br>
+            <label for='Bob Dylan'>
+            <input type="checkbox" id='Bob Dylan' name='big_names' value='Bob Dylan'>Bob Dylan
+            </label><br>
+            </div>
+            
+            <div class='right_check'>
+            <label for='Rimbaud'>
+            <input type="checkbox" id='Rimbaud' name='big_names' value='Rimbaud'>Arthur Rimbaud
+            </label><br>
+            <label for='Roland Topor'>
+        <input type="checkbox" id='Roland Topor' name='big_names' value='Roland Topor'> Roland Topor
+            </label><br>
+            <label for='Tarkovsky'>
+            <input type="checkbox" id='Tarkovsky' name='big_names' value='Tarkovsky'> Andrej Tarkovsky
+            </label><br>
+            <label for='Metallica'>
+            <input type="checkbox" id='Metallica' name='big_names' value='Metallica'> Metallica
+            </label><br>
+            </div>
+            </div>
+            <p >Thank you for getting till here. What do you think about this survey and the style of the page? Please let us know with a comment.</p>
+             <label for="review" id='review-label'>Comments:</label><br><textarea id="review" name="review" rows="4" cols="40" maxlength="200" >
+Max 200 characters
+</textarea><br>    
+            <button type="submit" id='submit'>Submit</button>
+        </form>
+            </div>
+        </main>
+    </body>
+
+</html>
