@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <style>
+
+    </style>
+    <head>
+    <title>Build a Roman Numeral Converter</title>
+    <link href='style2.css' rel='stylesheet'>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet"> 
+        <link rel='icon' href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSf06JNn_Tw4kk15Rg3XitfBKl_Ts0e3wUMfA&usqp=CAU" type='roman_numb'>
+        
+    </head>
+<body>
+    
+    <main id='main-doc'> <!-- main content here-->
+       
+        <nav id='navbar'>
+        <header>Roman Numerals</header>
+            <ul class='nav'>
+                <li><a href='#Roman_numbers' class='nav-link'>Roman numbers</a></li><hr>
+                <li><a href='#Our_task' class='nav-link'>Our task</a></li><hr>
+                <li><a href='#The_plan' class='nav-link'>The plan</a></li><hr>
+                <li><a href='#Writing_and_testing' class='nav-link'>Writing and Testing</a></li><hr>
+                <li><a href='#Conclusion' class='nav-link'>Conclusion</a></li><hr>
+                <li><a href='#Explanation' class='nav-link'>Explanation</a></li><hr>
+            </ul>
+        </nav>
+        
+    <div class='wrapper'>
+          <h1>Build a Roman numeral converter</h1>
+      <section class='main-section' id='Roman_numbers'></section>
+          <header>Roman numbers</header>
+        <article>
+            <p>One of the the projects at the end of the FCC's Javascript Curriculum is the Roman numeral converter. It takes an integer as an argument, and returns it converted according to the roman system. For instance: <br>
+                <code style='display:block'>1800 => MDCCC<br>
+                    750 => DCCL<br>
+                    80 => LXXX
+                </code>       
+            </p>
+        
+        </article>
+        <section class='main-section' id='Our_task'>
+          <header>Our task</header>
+            <p>Our task may seem simple when putting it down in plain english, but can be tricky when it comes to translating it into the computer's language. Javascript will be our mediator; we'll respect its syntax and rules and will be awarded, hopefully, with a nice, fast Roman Numeral Converter.</p>
+        </section>
+        <section class='main-section' id='The_plan'>
+          <header>The plan</header>
+            <p>To complete our task we need to break the main task into smaller parts; breaking it down into pieces allows for a better control, testing and debugging. Firts of all, what is a roman number? How do this numbers work? We know that they can be divided into four part: thousands, hundreds, tens and ones. 
+            </p>
+            <table class='table'>
+                <tr>
+                    <th>1</th>
+                    <th>5</th>
+                    <th>10</th>
+                    <th>50</th>
+                    <th>100</th>
+                    <th>500</th>
+                    <th>1000</th>
+                </tr>
+                <tr>
+                    <td>I</td>
+                    <td>V</td>
+                    <td>X</td>
+                    <td>L</td>
+                    <td>C</td>
+                    <td>D</td>
+                    <td>M</td>
+                </tr>
+            </table>
+            <figure>    
+                <!-- Make image responsive-->
+            <img src='https://www.onlinemathlearning.com/image-files/roman-numerals-1-1000.png' width="400" height='400' alt='roman_numerals_table'>
+                <figcaption>A more detailed table of roman numerals.</figcaption>
+            </figure>
+            
+            <p>1880 (MDCCCLXXXIV) can be divided as follows:</p>
+                <ul>
+                    <li>A thousand (1000)</li>
+                    <li>Eight hundreds (800)</li>
+                    <li>Eight tens (80)</li>
+                    <li>Four ones (4)</li>
+                </ul>
+       
+            
+            <p>We need, therefore, to split the integer passed as an argument into smaller parts, then convert them and finally stick them back together before returning the final value. The plan looks as follows: <code>Split into smaller parts => convert the single parts => Assemble and return</code>
+            </p>
+            
+        </section>
+        <section class='main-section' id='Writing_and_testing'>
+            
+          <header>Writing and Testing</header>  
+            <p>Firts of all, we need a cryteria for our computer -which probably doesn't know about roman numerals- for translating the numbers. We have our table above, but what about the computer? Where, and how, will we store our data for comparison? For our pourpose we'll use a two-dimensional array.</p>
+            <div class='code'>
+            <code style="display: block; font-weight: 600;">
+            let deposit = [['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'], ['X', 'XX', 'XXX','XL', 'L', 'LX', 'LXX', 'LXXX', 'XC'], ['C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM']]
+            </code>
+            </div>
+            <p>The array is stored inside a variable called 'deposit'; its a 2D array because it contains... other arrays. The first array holds our values from 1 to 9; the second from 10 to 90; the third from 100 to 900. As for the thousands (M), we assume that they'll never be higher than 4 (MMMM) since this would involve very big numbers, complicating too much the project (feel free to check how numbers above 4999 are written; it'd be very tedious to store them in our array, but you could do it).</p>
+            <div class='code'>
+            <code style="display: block; ">
+            Let's write down the formula for splitting our integer:<br>
+                <b>Thousands | Hundreds | Tens | Ones</b> <br>
+            For example: <br>
+                1884 => 1000(a) | 800(b) | 80(c) | 4(d)<br>                
+            </code>
+            </div>
+                <p>The number a (thousands) can be simply converted as a repetition of a(M), where a is the number of times we repeat it. Pretty intuitive. Number b (hundreds) is stored inside the third array; number c (tens) in the second, number d (ones) in the first. Each of them must be converted correctly, following their position inside the deposit array. How do we achieve that? Let's look at our final code, first, then break it into smaller pieces and comment them.</p>
+            <div class='code'>
+            <code>
+            function convertToRoman(num) {
+ let deposit = [['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'],<br> ['X', 'XX', 'XXX','XL', 'L', 'LX', 'LXX', 'LXXX', 'XC'], ['C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM']]<br>
+ 
+                <b>return 'M'.repeat(num.toString().slice(0, -3))<br> 
+                    + num.toString().slice(-3).split('').reverse()<br>
+                    .map((el, ind,) => el = deposit[ind][el-1])<br>
+                    .reverse().join('')</b>
+}<br>
+
+  convertToRoman('1884') //the function call 
+            </code>
+            </div>
+            </section>
+        <section class='main-section' id='Explanation'>
+            <header>Explanation</header>
+            <p>
+                <code>'M'.repeat(num.toString().slice(0, -3))</code>. Thousands are pretty simple to convert. We isolate them through the <b>toString()</b> and <b>slice()</b> methods. The first converts our number to a string, which allows us using slice (it doesn't work with numbers); this method copies a selected part of a string or of an array; it accepts two arguments: the first is the index where to start copying (remember that we start counting from 0, not 1), in this case the very beginning (0); the second is where to finish; <b>-3</b> here stands for 'go at the end of the array and move 3 places to the left'. In this example our number a (thousands) is 1; therefore, we just repeat M once;
+            </p>
+            <p>
+                <code>num.toString().slice(-3).split('').reverse()</code> transforms our number into a string, then copy the last 3 numbers of it (if the second argument for slice is not provided the method will copy <b>all</b> the array/string from the starting point), namely the hundreds, the tens and the ones, and finally -through the <code>split('')</code> method- separates and stores them into an array:<code>[ '8', '8', '4' ]</code>. We reverse it to <code>['4', '8', '8']</code>. The reason for that well'be soon clear.
+            </p>
+            <p>
+                <code>.map((el, ind,) => el = deposit[ind][el-1])</code>. The <b>map()</b> method is a higher order function: its a function which accepts another function as an argument (the so-called callback function), which will be performed on every single element of the array. Before we explain what this callback function will do, we need to undertand the arguments of the map method. Among other arguments (optionals), the first argument is the <b>current element</b> being processed, and the second is its <b>index</b>. Therefore, in an array like [1, 4, 5], when the method starts running the current element is '1'; its index  is 0 (remember, we count indexes from 0, not 1!); index of 4 is 1 and so on. Please note the structure of the array where we store our data ('deposit') and the array we're processing now: <br>
+                <code style="display: block; font-weight: 600; margin: 5px 0px;">deposit: [ones | tens | hundreds]<br>
+                    current array : [hundreds | tens | ones] </code>
+                That's why we need to reverse its order, which becomes <code>[ones | tens | hundreds]</code>; this way the index of the current element corresponds to its sub-array in our deposit. We need this logic for a simple reason: what if our argument has no thousands or hundreds? We know that our argument will be a valid integer from 1 to 4999; in other words, a number whose length will be between 1 and 4; no matter the length, our function will always work if we use this reverse logic; try switching the position of the sub-arrays inside our deposit array; for example, you could put the hundreds at the beginning, followed by the tens and finally the ones; this way, if you have a number like 1884 the function will work without any need to reverse the input integer, but with a number like 84 our function would convert our 8 in hundreds (eight hundred) and our 4 into tens (forty): clearly not what we want! <br></p>
+            <p>
+             Now that we've covered the structure and the logic of our arrays, we're finally at the most important part of our function, where the magic happens. How are we going to convert each element in what we need, namely its roman version? First off, with <code>deposit[ind]</code> we access the sub array we need from our deposit: ones, tens or hundreds; but this is not enough: it would simply return that correspondent sub-array instead of our current integer; we need to go deeper than that. To do so, we add another bracket, <code>deposit[ind][el-1]</code>. This could seems a bit confusing at a first glance: hold on. Once we have the correct array, we need to access a specific value inside it. Now, those values (our arabic numbers converted to roman numerals) are stored from the lowest to the highest. Again, remember that indexes start from 0, while our number are in a range of 1 to 9; therefore we need to trim that difference, and we do that with our <em>[el-1]</em> This tells the computer: 'go in the corresponding array of values stored in variable 'deposit' and give me the value stored at the index of this number, minus one'.<br>
+                <code style="display: block; font-weight: 600; margin: 7px 0px;">
+                numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]<br>
+                index:   [0, 1, 2, 3, 4, 5, 6, 7, 8]<br>
+                values:  ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX']<br> 
+                </code>
+                (This visual representation should help picturing the relationship between the arrays; between them, the index of their elements; if I want the element in the same position of '9',in my 'numbers' array, I'd need what is stored in the 'values' array at index 8; pick any number, substract 1 and you will get its index in the 'values' array.)   
+            </p>
+            <p>
+                <code>.reverse().join('')</code> After converting all our values we reverse them as to return them in the original order, then we join them in a string. At this point if there's a thousand it will be simply summed to this last value. Try this code out: it works with any value between 1 and 4999
+            </p>
+        </section>
+        <section class='main-section' id='Conclusion'>
+          <header>Conclusion</header>
+            <p>Hopefully this tutorial wasn't to boring to read. It should give you an idea of how arrays work and how to use them to store, exchange and convert information. Java Script is a dynamic language that can do amazing things, once you learn it, not just converting numbers to their roman version. FCC covers this language in depth; if you are still studying plain HTML and CSS, you should feel excited about what's next the Responsive Web Design Certification. Keep studying, and happy coding! </p>
+        </section>
+        </div>
+    
+    </main>
+
+</body>
+</html>
